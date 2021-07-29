@@ -6,9 +6,12 @@ const api = require('../api');
 /* GET home page. */
 router.get('/', async (req, res) => {
   const budgets = await api.getLastBudget();
-  const entry = await api.getEntryBudget();
+  const budgetEntrys = await api.sumEntry();
+  const budgetEgress = await api.sumEgress();
+  const balance = ((budgetEntrys)-(budgetEgress));
+  
   //console.log(entry);
-  res.render('index', { title: 'Personal budget', budgets, entry});
+  res.render('index', { title: 'Personal budget', budgets, budgetEntrys, budgetEgress, balance});
 });
 /* Admin panel */
 router.get('/adminBudget', async (req, res) => {

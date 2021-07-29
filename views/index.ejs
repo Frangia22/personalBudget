@@ -13,8 +13,32 @@
     <%- include('./partials/nav') %>
     <main class="principal" id="content">
       <div class="container">
-        <div class="graf" id="graf">
-  
+        <div class="header-subtitle">
+            <ul class="subtitle-list">
+                <li class="subtitle-item subtitle-item-admin"><h1 class="subtitle-item-link">Balance budget</h1></li>
+            </ul>
+        </div>
+        <div class="balance">
+            <ul class="list py-2">
+                <li class="list-balance"><a class="list-item">Entry</a></li>
+                <li class="list-balance"><a class="list-item text-success">$ <%= budgetEntrys %></a></li>
+            </ul> 
+            <ul class="list py-2">
+                <li class="list-balance"><a class="list-item">Egress</a></li>
+                <li class="list-balance"><a class="list-item text-warning">$ <%= budgetEgress %></a></li>
+            </ul> 
+            <hr>
+            <% if (balance > 0) { %>
+                <ul class="list py-2">
+                    <li class="list-balance"><a class="list-item ">Balance</a></li>
+                    <li class="list-balance"><a class="list-item text-success d-flex">$ <%= balance %> <img class="img-arrow" src="/images/flechaarriba.svg" alt=""></a></li>
+                </ul> 
+            <%} else{ %>
+                <ul class="list py-2">
+                    <li class="list-balance"><a class="list-item">Balance</a></li>
+                    <li class="list-balance"><a class="list-item text-warning d-flex">$ <%= balance %> <img class="img-arrow" src="/images/flechaabajo.svg" alt=""></a></li>
+                </ul> 
+            <% } %>
         </div>
       </div>
       <div class="container">
@@ -52,38 +76,5 @@
     <%- include('./partials/footer') %>
     <script src="/javascripts/effects.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const chart = Highcharts.chart('graf', {
-            chart: {
-                type: 'line'
-            },
-            title: {
-                text: 'Budget balance'
-            },        
-            yAxis: {
-                title: {
-                    text: 'Amount'
-                }
-            },
-            series: [{
-                name: 'Entry',
-                data: [14,20,32]
-            }, {
-                name: 'Egress',
-                data: [15, 17, 1]
-            }, {
-                name: 'Balance',
-                data: [1, 3, 31]
-            }]
-        });
-    });
-    const mostrar = (entry) => {
-      entry.forEach(item => {
-        chart.data['series'].push(item.amount);
-      })
-      console.log(chart.data);
-    } 
-  </script>
 </body>
 </html>

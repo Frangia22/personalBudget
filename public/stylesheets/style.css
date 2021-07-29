@@ -16,7 +16,9 @@
     --lightblack: #464242;
     --lightwine: #c5b68c;
     --pinkwine: #642121; 
+    --success: #3fee3b;
     --red: #ff3f40; 
+    --warning: #f32a23;
     --whitewine: #f3f2de;
     --white: #f0f0f0;
 }
@@ -428,6 +430,29 @@ th, td{
 table{
   width: 64em;
 }
+.balance {
+  width: 30em;
+  margin: 10px auto;
+  background-color: var(--light-200-green);
+  padding: 10px;
+}
+.text-success{
+  color: var(--success);
+}
+.text-warning{
+  color: var(--warning);
+}
+.list-balance {
+  font-size: 1.4em;
+}
+.d-flex{
+  display: flex;
+  align-items: center;
+}
+.img-arrow {
+  width: 1.4em;
+  margin: auto 20px;
+}
 /* ----------------------------------------- Fin de sobre nosotros --------------------------------------------*/
 /* ---------------------------------------- Media queries --------------------- */
 @media (max-width: 1023px){
@@ -450,6 +475,9 @@ table{
       flex-wrap: wrap;
       gap: 5px;
   }
+    .balance{
+      width: 100%;
+    }
 }
 @media (max-width: 767px){
     body{

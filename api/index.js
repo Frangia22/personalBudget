@@ -97,6 +97,31 @@ const getBudgetByTitle = async(query) => {
     });
     return budget;
 }
+//Sumo todos los ingresos
+//SELECT SUM(amount) FROM `personalbudget` WHERE type = 'entry'; 
+const sumEntry = async() => {
+    const entry = await db.personalBudget.sum('amount', {
+        where: {
+            type: 'Entry'
+        }
+    })
+    .then(result => {
+        return result;
+    })
+    return entry;
+}
+//Sumo todos los egresos
+const sumEgress = async() => {
+    const egress = await db.personalBudget.sum('amount', {
+        where: {
+            type: 'Egress'
+        }
+    })
+    .then(result => {
+        return result;
+    })
+    return egress;
+}
 module.exports = {
     getBudgets,
     addBudget, 
@@ -106,5 +131,7 @@ module.exports = {
     getLastBudget,
     getEntryBudget,
     getBudgetByTitle,
-    getEgressBudget
+    getEgressBudget,
+    sumEntry,
+    sumEgress
 }
