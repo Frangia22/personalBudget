@@ -4,8 +4,11 @@ var router = express.Router();
 const api = require('../api');
 
 /* GET home page. */
-router.get('/', (req, res) => {
-  res.render('index', { title: 'Personal budget'});
+router.get('/', async (req, res) => {
+  const budgets = await api.getLastBudget();
+  const entry = await api.getEntryBudget();
+  //console.log(entry);
+  res.render('index', { title: 'Personal budget', budgets, entry});
 });
 /* Admin panel */
 router.get('/adminBudget', async (req, res) => {

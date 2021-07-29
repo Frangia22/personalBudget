@@ -47,11 +47,38 @@ const updateBudget = async(id, concept, amount, type, reference) => {
     })
     return budget;
 }
+//Traigo los ultimos 10 registros
+//SELECT * FROM `personalbudget`ORDER BY date DESC LIMIT 2; 
+const getLastBudget = async() => {
+    const budget = await db.personalBudget.findAll({
+        limit: 10,
+        order: [
+            ['date', 'DESC']
+        ]              
+    })
+    return budget;
+}
+//Traer ingresos
+//SELECT * FROM `personalbudget` WHERE type = 'Entry'; 
+const getEntryBudget = async() => {
+    const entry = await db.personalBudget.findAll({
+        where: {
+            type: 'Entry'
+        }
+    })
+    .then(result => {
+        return result;
+    });
+    return entry;
+}
+//Traer egresos
 
 module.exports = {
     getBudgets,
     addBudget, 
     deleteBudget,
     getBudgetById,
-    updateBudget
+    updateBudget,
+    getLastBudget,
+    getEntryBudget
 }
