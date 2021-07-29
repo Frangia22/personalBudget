@@ -15,6 +15,16 @@ router.get('/adminBudget', async (req, res) => {
   const budgets = await api.getBudgets();
   res.render('pages/adminBudget', { title: 'Admin panel', budgets});
 });
+/* Buscador GET */
+router.get('/buscar', async (req, res) => {
+  // Los datos de la URL vienen en req.query
+  const budgets = await api.getBudgetByTitle(req.query.q);
+  res.render('pages/adminBudget', {
+    title: 'Personal budget search',
+    budgets
+  });
+  // res.send(book);
+});
 /* Add operation GET */
 router.get('/addBudget', (req, res) => {
   res.render('pages/addBudget', { title: 'Add operation'});

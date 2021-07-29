@@ -72,7 +72,31 @@ const getEntryBudget = async() => {
     return entry;
 }
 //Traer egresos
-
+const getEgressBudget = async() => {
+    const egress = await db.personalBudget.findAll({
+        where: {
+            type: 'Egress'
+        }
+    })
+    .then(result => {
+        return result;
+    });
+    return egress;
+}
+//Buscador
+const getBudgetByTitle = async(query) => {
+    const budget = await db.personalBudget.findAll({
+        where: {
+            concept: {
+                [Op.substring]: query
+            }
+        }
+    })
+    .then(result => {
+        return result;
+    });
+    return budget;
+}
 module.exports = {
     getBudgets,
     addBudget, 
@@ -80,5 +104,7 @@ module.exports = {
     getBudgetById,
     updateBudget,
     getLastBudget,
-    getEntryBudget
+    getEntryBudget,
+    getBudgetByTitle,
+    getEgressBudget
 }

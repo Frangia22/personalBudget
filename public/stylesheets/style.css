@@ -1,5 +1,6 @@
 /*--------------------------------------- Fuente ---------------------------------------------*/
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Mate+SC&family=Shadows+Into+Light&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Mate+SC&family=Shadows+Into+Light&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=Mate+SC&family=Teko&display=swap');
 /*--------------------------------------- Variables ---------------------------------------------*/
 :root{
     --bottom: 20px;
@@ -264,6 +265,15 @@ body{
 .subtitle-item-admin{
     text-align: center;
 }
+/* ------------------------------ Search */
+.search {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.w-25{
+  width: 16em;
+}
 /* table */
 table{
     margin: 10px auto;
@@ -304,7 +314,7 @@ th, td{
     font-weight: bold;
 }
 .btn-products{
-    background-color: var(--lightblue);
+    background-color: var(--light-700-blue);
     border: 0;
     color: var(--black);
     font-size: 1em;
@@ -443,7 +453,7 @@ table{
 }
 @media (max-width: 767px){
     body{
-        font-family: 'Shadows Into Light', Impact, sans-serif, cursive;
+        font-family: 'Teko', Impact, sans-serif, cursive;
     }
     /*------------------------------------- Nav ----------------------------------------------*/
     .btn-menu{
