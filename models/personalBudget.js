@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
         concept: DataTypes.STRING(80),
         amount: DataTypes.DECIMAL(10, 2),
         date: {
-            type: DataTypes.DATETIME,  
-            defaultValue: sequelize.NOW
+            type: DataTypes.DATE,  
+            defaultValue: sequelize.CURRENT_TIMESTAMP
         },
         type: DataTypes.STRING(50),
         reference: {
