@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="shortcut icon" href="/images/budget.svg">
+    <title><%= title %></title>
+</head>
+<body>
+    <%- include('../partials/header') %>
+    <%- include('../partials/nav') %>
+<main class="principal" id="content">
+    <div class="container">
+        <div class="header-subtitle">
+            <ul class="subtitle-list">
+                <li class="subtitle-item subtitle-item-admin"><h1 class="subtitle-item-link">Administration panel</h1></li>
+            </ul>
+        </div>
+    </div><!-- Cierra el subtitle -->
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Concept</th>
+                    <th>$ Amount</th>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <% budgets.forEach(budget => { %>
+            <tbody>
+                <tr>
+                    <td><%= budget.id %></td>
+                    <td><%= budget.concept %></td>
+                    <td>$ <%= budget.amount %></td>
+                    <td><%= budget.date %></td>
+                    <td><%= budget.type %></td>
+                    <td>
+                        <a class="btn btn-edit" href="/edit/<%= budget.id %>">Edit</a>
+                        <a class="btn btn-delete" href="/delete/<%= budget.id %>">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+            <% }) %>
+        </table>
+        <div class="add-product">
+            <a class="btn btn-add" href="/addBudget">Add operation</a>
+        </div>
+    </div>
+</main>
+<%- include('../partials/footer') %>
+<script src="/javascripts/effects.js"></script>
+</body>
+</html>
